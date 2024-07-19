@@ -1,3 +1,11 @@
+/*
+ if you wanna update
+
+git add . (to add all new files)
+git commit -m "message of change"
+git push
+*/
+
 let myXPos = 100;
 let myYPos = 300;
 let enemyXPos = 250;
@@ -61,4 +69,42 @@ if (keyIsDown(32)){//spacebar key
 }
 
 
+
+
+
+
+
+
+
+
+
+
+     // Update and draw bullets
+     if (bullets.length > 0) { // Check if there are bullets to update
+        bullets[0].x += bullets[0].speed; // Move bullet horizontally
+        fill(255, 0, 0); // Set fill color to red for bullets
+        rect(bullets[0].x, bullets[0].y, bullets[0].w, bullets[0].h); // Draw bullet
+        
+        // Remove bullet that is off-screen
+        if (bullets[0].x > width) { // If bullet moves beyond the canvas width
+            bullets.splice(0, 1); // Remove the bullet from the array
+        }
+    }
 }
+
+
+// Function to shoot a bullet
+function shootBullet() {
+    if (bullets.length === 0) { // Only shoot if there are no existing bullets
+        bullets.push({ // Add a new bullet object to the bullets array
+            x: myXPos + 30, // Set bullet X position to the right side of the player
+            y: myYPos, // Set bullet Y position to the center of the player
+            w: 10, // Width of the bullet
+            h: 5, // Height of the bullet
+            speed: 7 // Speed at which the bullet moves
+        });
+    }
+}
+
+
+
